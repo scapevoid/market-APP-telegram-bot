@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- style -->
+    <link rel="stylesheet" href="style_main.css">
+    <!--main body-->
+  <header>
+  <div  style="background-color: lightcyan; border-radius: 25px; height: 75px; width: 100%; align-content: center;">
+    <span>
+      <a style="text-decoration: none;" href="">
+      <img style="position: relative; border-radius: 20%; left:8%; height: 100%; justify-self: center; margin: 0%; padding: 0;" src="images/17105187.png" alt="forum image">
+      </a>
+      <a style="text-decoration: none;" href="">
+        <img style="position: relative; border-radius: 20%; left:19%; height: 100%; justify-self: center; margin: 0%; padding: 0;" src="images/images.png" alt="forum image">
+      </a>
+      <a style="text-decoration: none;" href="">
+      <img style="position: relative; border-radius: 20%; left:30%; height: 100%; justify-self: center; margin: 0%; padding: 0;" src="images/1251615.png" alt="forum image">
+      </a>
+    </span>
+  </div>
+  </header>
+  <main>
+    <div class="body_Market" style="top: 90px; background-color: lightcyan; height: 84%; width: 96%; z-index: 1; border-radius: 25px;">
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+        <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
+      </div>
+      <div class="PopOut" style="visibility:visible; height: 70%; width: 96%; z-index: 2; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 25px; border-top-right-radius: 25px;  background-color: rgb(184, 215, 215); position: absolute; bottom: 0px; ">
+       <!-- top -->
+        <button onclick="document.querySelector('.PopOut').style.visibility = `hidden`" style="position: absolute; right: 0px; cursor: pointer;">
+          close
+        </button>
+        <h1 style="top: 3%; left: 3%; font-size: 90%; margin: 0; padding: 0; position: absolute;">
+          NAME PRODUCT
+        </h1>
+        <hr style="top: 8%; position: relative; background-color: black; border: 1px solid lightcyan;">
+
+         <div style="position: relative; top: 5%; overflow-y: scroll; height: 89%; width: 100%; padding: 10px; box-sizing: border-box;">
+          <p>hello</p>
+
+          <p>hello</p>
+          <p>hello</p>
+
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          
+        </div>
+      </div>
+  </main>
+  <script>
+      const cards = document.querySelectorAll('.card_market');
+      cards.forEach((card, index) =>
+        {
+            card.style.display = 'flex';
+            card.style.justifyContent = 'center';
+            card.style.alignItems = 'center';
+            card.style.cursor = 'pointer';
+            card.style.position = 'relative';
+            card.style.left = '0%';
+
+
+            const img = document.createElement('img');
+
+            img.src = `images/card_image_${index + 1}.png`;
+            img.alt = `Card ${index + 1} image`;
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            img.style.position = 'absolute';
+            img.style.borderRadius = '25%';
+            img.align = 'center';
+            card.appendChild(img);
+            card.addEventListener('click', () => 
+            {
+            showPopOut(index);
+            });
+        });
+
+
+        function showPopOut(index)
+        {
+          const card = document.querySelectorAll('.card_market')[index];
+          const PopOut = document.querySelector('.PopOut');
+          PopOut.style.visibility = 'visible';
+          switch(index)
+          {
+            case 0:
+              
+          }
+        }
+  </script>
+</body>
+</html>
