@@ -44,7 +44,7 @@
       </div>
       <div class="PopOut" style="visibility:visible; height: 70%; width: 96%; z-index: 2; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 25px; border-top-right-radius: 25px;  background-color: rgb(184, 215, 215); position: absolute; bottom: 0px; ">
        <!-- top -->
-        <button onclick="document.querySelector('.PopOut').style.visibility = `hidden`" style="position: absolute; right: 0px; cursor: pointer;">
+        <button onclick="hidePopOut()" style="position: absolute; right: 0px; cursor: pointer;">
           close
         </button>
         <h1 style="top: 3%; left: 3%; font-size: 90%; margin: 0; padding: 0; position: absolute;">
@@ -55,15 +55,6 @@
         <div class="MainPopOut" style="position: relative; top: 5%; overflow-y: scroll; height: 89%; width: 100%; padding: 10px; box-sizing: border-box;">
          
           <!-- there list of items of selected product -->
-          <div style="margin: 5px; padding: auto; background-color: black; width: 100%; height: 16.8%; border-radius: 15px; display:block;">
-            <img src="images/card_image_1.png" style="margin: 1%; width: 50px; height: auto; border-radius: 25%;" alt="PRODUCT">
-            <p style="position: relative; bottom: 39.3%; width: 165px; border-radius: 12px; margin: 1px; padding: 14px; display:inline-block; background-color: lightcyan; color: black;">
-            EXAMPLE
-            </p>
-            <p style="position: relative; bottom: 39.3%; border-radius: 12px; margin: 0px; padding: 14px; display:inline-block; background-color: lightcyan; color: black;">
-            0.00$
-            </p>
-          </div>
           
         </div>
         
@@ -119,32 +110,35 @@
                   const name = document.createElement('p');
                   const price = document.createElement('p');
 
-                  img.src = image_product;
-                  img.alt = `Card ${index + 1} image`;
+                  img.style.margin = '0%';
                   img.style.width = '50px';
                   img.style.height = 'auto';
                   img.style.borderRadius = '25%';
-                  img.style.margin = '1%';
-                  img.style.display = 'inline-block';
-                  img.style.position = 'relative';
-                  img.style.bottom = '39.3%';
-                  img.style.left = '0%';
-                  img.style.padding = '0px';
-                  img.style.boxSizing = 'border-box';
+                  img.src = image_product;
+                  img.alt = `Card ${i} image`;
+                  
                   
                   name.innerHTML = name_product;
                   name.style.position = 'relative';
-                  name.style.bottom = '39.3%';
+                  name.style.bottom = '35.3%';
                   name.style.width = '165px';
                   name.style.borderRadius = '12px';
-                  name.style.margin = '1px';
+                  name.style.margin = '1%';
                   name.style.padding = '14px';
                   name.style.display = 'inline-block';
                   name.style.backgroundColor = 'lightcyan';
                   name.style.color = 'black';
-                  name.style.boxSizing = 'border-box';
-                  name.style.textAlign = 'center';
-                  name.style.fontSize = '90%';
+
+                  
+                  price.innerHTML = price_product;
+                  price.style.position = 'relative';
+                  price.style.bottom = '35.3%';
+                  price.style.borderRadius = '12px';
+                  price.style.margin = '1px';
+                  price.style.padding = '14px'; 
+                  price.style.display = 'inline-block';
+                  price.style.backgroundColor = 'lightcyan';
+                  price.style.color = 'black';
 
 
 
@@ -160,12 +154,23 @@
                   div.appendChild(img);
                   div.appendChild(name);
                   div.appendChild(price);
-                  price.innerHTML = price_product;
                 }
               })
        }
 
+       function hidePopOut()
+        {
+          // i need clear all children of PopOut
+          const list = document.querySelector('.MainPopOut');
+          const PopOut = document.querySelector('.PopOut');
+          PopOut.style.visibility = 'hidden';
+          while (list.firstChild) {
+            list.removeChild(list.firstChild);
+          }
+        }
 
+
+        // showPopOut function
         function showPopOut(index)
         {
           const card = document.querySelectorAll('.card_market')[index];
