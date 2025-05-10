@@ -25,7 +25,7 @@
   </div>
   </header>
   <main>
-    <div class="body_Market" style="top: 90px; background-color: lightcyan; height: 84%; width: 96%; z-index: 1; border-radius: 25px;">
+    <div class="body_Market" style="top: 90px; background-color: lightcyan; height: 84%; width: 99%; z-index: 1; border-radius: 25px;">
         <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
         <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
         <div class="card_market" style="height: 0px; width: 0px; margin: 7%; margin-left: 20%; padding: 32% 32%; background-color: white; border-radius: 25%; right: 50%;"></div>
@@ -52,24 +52,24 @@
         </h1>
         <hr style="top: 8%; position: relative; background-color: black; border: 1px solid lightcyan;">
 
-         <div style="position: relative; top: 5%; overflow-y: scroll; height: 89%; width: 100%; padding: 10px; box-sizing: border-box;">
-          <p>hello</p>
-
-          <p>hello</p>
-          <p>hello</p>
-
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
+        <div class="MainPopOut" style="position: relative; top: 5%; overflow-y: scroll; height: 89%; width: 100%; padding: 10px; box-sizing: border-box;">
+         
+          <!-- there list of items of selected product -->
+          <div style="margin: 5px; padding: auto; background-color: black; width: 100%; height: 16.8%; border-radius: 15px; display:block;">
+            <img src="images/card_image_1.png" style="margin: 1%; width: 50px; height: auto; border-radius: 25%;" alt="PRODUCT">
+            <p style="position: relative; bottom: 39.3%; width: 165px; border-radius: 12px; margin: 1px; padding: 14px; display:inline-block; background-color: lightcyan; color: black;">
+            EXAMPLE
+            </p>
+            <p style="position: relative; bottom: 39.3%; border-radius: 12px; margin: 0px; padding: 14px; display:inline-block; background-color: lightcyan; color: black;">
+            0.00$
+            </p>
+          </div>
           
         </div>
+        
       </div>
   </main>
-  <script>
+  <script defer>
       const cards = document.querySelectorAll('.card_market');
       cards.forEach((card, index) =>
         {
@@ -97,6 +97,74 @@
             });
         });
 
+        function LoadList(index)
+        {
+          fetch(`http://127.0.0.1:5001/productslist/${index}`, {
+            method: 'GET', 
+          })
+          .then(Response => Object.assign(Response.json()))
+            .then(data => 
+              {
+                const total = data["total"];
+                for (let i = 1; i < total; i++)
+                {
+                  const name_product = data[`product${i}`]["productname"];
+                  const price_product = data[`product${i}`]["productprice"];
+                  const image_product = data[`product${i}`]["producticonpath"];
+
+
+                  const list = document.querySelector('.MainPopOut');
+                  const div = document.createElement('div');
+                  const img = document.createElement('img');
+                  const name = document.createElement('p');
+                  const price = document.createElement('p');
+
+                  img.src = image_product;
+                  img.alt = `Card ${index + 1} image`;
+                  img.style.width = '50px';
+                  img.style.height = 'auto';
+                  img.style.borderRadius = '25%';
+                  img.style.margin = '1%';
+                  img.style.display = 'inline-block';
+                  img.style.position = 'relative';
+                  img.style.bottom = '39.3%';
+                  img.style.left = '0%';
+                  img.style.padding = '0px';
+                  img.style.boxSizing = 'border-box';
+                  
+                  name.innerHTML = name_product;
+                  name.style.position = 'relative';
+                  name.style.bottom = '39.3%';
+                  name.style.width = '165px';
+                  name.style.borderRadius = '12px';
+                  name.style.margin = '1px';
+                  name.style.padding = '14px';
+                  name.style.display = 'inline-block';
+                  name.style.backgroundColor = 'lightcyan';
+                  name.style.color = 'black';
+                  name.style.boxSizing = 'border-box';
+                  name.style.textAlign = 'center';
+                  name.style.fontSize = '90%';
+
+
+
+                  div.style.margin = '5px';
+                  div.style.padding = 'auto';
+                  div.style.backgroundColor = 'black';
+                  div.style.width = '100%';
+                  div.style.height = '16.8%';
+                  div.style.borderRadius = '15px';
+                  div.style.display = 'block';
+
+                  list.appendChild(div);
+                  div.appendChild(img);
+                  div.appendChild(name);
+                  div.appendChild(price);
+                  price.innerHTML = price_product;
+                }
+              })
+       }
+
 
         function showPopOut(index)
         {
@@ -106,7 +174,8 @@
           switch(index)
           {
             case 0:
-              
+              let list = LoadList(index);
+              break;
           }
         }
   </script>
